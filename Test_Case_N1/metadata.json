@@ -1,0 +1,180 @@
+{
+  "id": "protocolo-7",
+  "title": "Protocolo 7",
+  "subtitle": "El Caso del Centro Mente Clara",
+  "difficulty": "hard",
+  "estimated_messages": 80,
+  "estimated_time_hours": 3,
+  "price_usd": 7.50,
+  "has_twist": true,
+  "twist_difficulty": "expert",
+  "genre": ["psychological", "mystery", "meta-narrative"],
+  "warnings": ["Temas de trauma psicológico", "Contenido sobre violencia"],
+  
+  "characters": [
+    {
+      "name": "Dr. Elena Navarro",
+      "role": "Psiquiatra Senior",
+      "age": 48,
+      "file": "dr_navarro.md",
+      "guilty": false,
+      "knows_twist": true,
+      "difficulty_to_interrogate": "medium"
+    },
+    {
+      "name": "Enfermera Claudia Silva",
+      "role": "Enfermera Jefe Turno Noche",
+      "age": 34,
+      "file": "enfermera_silva.md",
+      "guilty": false,
+      "knows_twist": false,
+      "difficulty_to_interrogate": "easy"
+    },
+    {
+      "name": "Roberto Gómez",
+      "role": "Paciente Internado",
+      "age": 41,
+      "file": "paciente_gomez.md",
+      "guilty": false,
+      "knows_twist": false,
+      "difficulty_to_interrogate": "hard",
+      "notes": "Sospechoso obvio, pero inocente"
+    },
+    {
+      "name": "Dr. Lucas Mora",
+      "role": "Psicólogo Junior",
+      "age": 29,
+      "file": "dr_mora.md",
+      "guilty": true,
+      "knows_twist": false,
+      "difficulty_to_interrogate": "very_hard",
+      "confession_triggers": [
+        "evidence_fingerprints_on_weapon",
+        "camera_footage_confrontation",
+        "no_alibi_23:00-00:15",
+        "witness_from_bar"
+      ]
+    }
+  ],
+
+  "solution_file": "solution.md",
+  
+  "evidence": {
+    "physical": [
+      "Pisapapeles con sangre (arma del crimen)",
+      "Carpeta de Roberto Gómez abierta",
+      "Puerta trasera sin llave",
+      "Computadora encendida de la víctima"
+    ],
+    "digital": [
+      "Cámaras de seguridad (23:40 - Mora en el centro)",
+      "Registro de acceso (salidas/entradas)",
+      "Email hostil de Silva a Rivas",
+      "Historial de bar (Mora 20:30-22:30)"
+    ],
+    "testimonial": [
+      "Barman testifica sobre Mora furioso",
+      "Silva vio a Gómez deambulando 00:15",
+      "Navarro sobre tensiones en el equipo"
+    ]
+  },
+
+  "key_locations": [
+    "Oficina del Dr. Rivas (primer piso)",
+    "Pabellón B - Habitación 203 (segundo piso)",
+    "Estación de enfermería",
+    "Puerta trasera del archivo",
+    "Bar cercano al centro"
+  ],
+
+  "timeline_critical_moments": [
+    "14:00 - Reunión tensa",
+    "20:15 - Mora sale (registrado)",
+    "22:45 - Rivas entra a su oficina",
+    "23:10 - Silva en pasillo",
+    "23:40 - Mora en cámara (CRÍTICO)",
+    "00:15 - Gómez deambulando",
+    "06:15 - Descubrimiento del cuerpo"
+  ],
+
+  "investigation_mechanics": {
+    "max_messages": 100,
+    "auto_note_system": true,
+    "contradiction_tracking": true,
+    "special_commands": [
+      "/revisar_contradicciones",
+      "/cuestionar_realidad",
+      "/resolver",
+      "/resolver_verdad"
+    ]
+  },
+
+  "win_conditions": {
+    "superficial_case": {
+      "required": [
+        "identify_mora_as_killer",
+        "explain_motive_protocol7_career",
+        "explain_method_impulse_paperweight"
+      ],
+      "minimum_evidence": 3,
+      "accepted_variations": true
+    },
+    "twist_discovery": {
+      "required": [
+        "detect_5plus_inconsistencies",
+        "question_reality_directly",
+        "connect_protocol7_to_self"
+      ],
+      "optional_command": "/cuestionar_realidad"
+    }
+  },
+
+  "endings": [
+    {
+      "id": "ending_a",
+      "name": "Resolución Superficial",
+      "condition": "Correct accusation without discovering twist",
+      "message": "Has resuelto el caso. El Dr. Mora ha confesado. Justicia servida."
+    },
+    {
+      "id": "ending_b",
+      "name": "Descubrimiento Completo",
+      "condition": "Discovered twist AND resolved case",
+      "message": "Has descubierto la verdad detrás de la verdad. Protocolo 7 completado exitosamente."
+    },
+    {
+      "id": "ending_c",
+      "name": "Resolución Incorrecta",
+      "condition": "Wrong accusation",
+      "message": "Tu acusación es incorrecta. ¿Deseas continuar investigando?"
+    },
+    {
+      "id": "ending_d",
+      "name": "Rechazo Terapéutico",
+      "condition": "Discovered twist and rejected therapy",
+      "message": "Has elegido terminar la sesión. La terapia queda inconclusa."
+    }
+  ],
+
+  "replayability": {
+    "high": true,
+    "reasons": [
+      "Descubrir el twist en segunda jugada",
+      "Diferentes paths de interrogatorio",
+      "Easter eggs en diálogos",
+      "Profundizar en backstories de personajes"
+    ]
+  },
+
+  "technical_notes": {
+    "context_files": [
+      "case.md (base, always loaded)",
+      "character.md (loaded per conversation)",
+      "solution.md (loaded only for evaluation)"
+    ],
+    "llm_model": "claude-sonnet-4 or better",
+    "estimated_tokens_per_session": "50k-80k",
+    "save_conversation_history": true,
+    "allow_character_switching": true
+  }
+}
